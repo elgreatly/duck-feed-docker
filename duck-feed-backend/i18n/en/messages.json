@@ -1,0 +1,9 @@
+{
+  "required": "is required",
+  "invalidTime": "please add valid time",
+  "invalidString": "should be string",
+  "invalidNumber": "should be Number",
+  "successCreated": "Duck Feed Created Successfully",
+  "invalidBoolean": "Should be boolean",
+  "successCreatedAndScheduled": "Duck Feed Created And Scheduled Successfully"
+}

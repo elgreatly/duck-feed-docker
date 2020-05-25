@@ -1,0 +1,41 @@
+version: '3.7'
+
+services:
+
+  duck-feed-frontend:
+    container_name: duck-feed-frontend
+    depends_on:
+      - duck-feed-backend
+    build:
+      context: duck-feed-frontend
+    volumes:
+      - ./duck-feed-frontend:/app
+      - '/app/node_modules'
+    ports:
+      - '4200:4200'
+
+  duck-feed-backend:
+    container_name: duck-feed-backend
+    depends_on:
+      - mongodb_container
+    build:
+      context: duck-feed-backend
+    volumes:
+      - ./duck-feed-backend:/app'
+      - '/app/node_modules'
+    ports:
+      - '3000:3000'
+
+  mongodb_container:
+    image: mongo:3.6.18
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: 123456
+      MONGO_INITDB_DATABASE: duck-feed
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_data_container:/data/db
+      
+volumes:
+  mongodb_data_container:

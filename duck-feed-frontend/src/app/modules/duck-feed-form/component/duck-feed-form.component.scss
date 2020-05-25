@@ -1,0 +1,20 @@
+.form-title {
+    margin: 20px 0;
+}
+.form-control {
+    &.invalid {
+        border-color: #dc3545;
+        &:focus {
+            box-shadow: 0 0 0 0.2rem rgba(220,53,69,.25);
+        }
+    }
+}
+.error-messages-container {
+    .invalid-feedback {
+        display: block;
+    }
+}
+
+.submit-button {
+    float: right;
+}

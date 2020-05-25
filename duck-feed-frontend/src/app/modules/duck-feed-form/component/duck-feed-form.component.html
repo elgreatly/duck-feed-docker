@@ -1,0 +1,84 @@
+<div class="form-title">
+    <h1>Duck Feed</h1>
+</div>
+<div *ngIf="successMessage" class="alert alert-success" role="alert">
+    {{successMessage}}
+</div>
+<form [formGroup]="duckFeedForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+        <div class="col-sm-12 col-md-4">
+            <div class="form-group">
+                <label for="fed-time">Fed Time</label>
+                <ngb-timepicker formControlName="fed_time" [spinners]="false"></ngb-timepicker>
+                <div class="error-messages-container" *ngIf="(duckFeedFormControl.fed_time.touched || submitted) && duckFeedFormControl.fed_time.errors?.required">
+                    <span class="invalid-feedback">Required</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <div class="form-group">
+                <label for="food">Food</label>
+                <input type="text" formControlName="food" id="food" placeholder="Food" class="form-control"
+                [class.invalid]="(duckFeedFormControl.food.touched || submitted) && duckFeedFormControl.food.errors?.required" />
+                <div class="error-messages-container" *ngIf="(duckFeedFormControl.food.touched || submitted) && duckFeedFormControl.food.errors?.required">
+                    <span class="invalid-feedback">Required</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <div class="form-group">
+                <label for="place">Place</label>
+                <input type="text" formControlName="place" id="place" placeholder="Place" class="form-control"
+                [class.invalid]="(duckFeedFormControl.place.touched || submitted) && duckFeedFormControl.place.errors?.required" />
+                <div class="error-messages-container" *ngIf="(duckFeedFormControl.place.touched || submitted) && duckFeedFormControl.place.errors?.required">
+                    <span class="invalid-feedback">Required</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <div class="form-group">
+                <label for="number-of-ducks">Number Of Ducks</label>
+                <input type="number" formControlName="number_of_ducks" id="number-of-ducks" placeholder="Number Of Ducks" class="form-control"
+                [class.invalid]="(duckFeedFormControl.number_of_ducks.touched || submitted) && duckFeedFormControl.number_of_ducks.errors?.required" />
+                <div class="error-messages-container" *ngIf="(duckFeedFormControl.number_of_ducks.touched || submitted) && duckFeedFormControl.number_of_ducks.errors?.required">
+                    <span class="invalid-feedback">Required</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <div class="form-group">
+                <label for="food-type">Food Type</label>
+                <input type="text" formControlName="food_type" id="food-type" placeholder="Food Type" class="form-control"
+                [class.invalid]="(duckFeedFormControl.food_type.touched || submitted) && duckFeedFormControl.food_type.errors?.required" />
+                <div class="error-messages-container" *ngIf="(duckFeedFormControl.food_type.touched || submitted) && duckFeedFormControl.food_type.errors?.required">
+                    <span class="invalid-feedback">Required</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <div class="form-group">
+                <label for="food-weight">Food Weight</label>
+                <div class="row">
+                    <div class="col-sm-10">
+                        <input type="number" formControlName="food_weight" id="food-weight" placeholder="Food Weight" class="form-control"
+                        [class.invalid]="(duckFeedFormControl.food_weight.touched || submitted) && duckFeedFormControl.food_weight.errors?.required" />
+                        <div class="error-messages-container" *ngIf="(duckFeedFormControl.food_weight.touched || submitted) && duckFeedFormControl.food_weight.errors?.required">
+                            <span class="invalid-feedback">Required</span>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">kg</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group form-check">
+        <input type="checkbox" formControlName="schedule" class="form-check-input" id="schedule">
+        <label class="form-check-label" for="schedule">Schedule</label>
+    </div>
+    <button class="btn btn-lg btn-primary submit-button" type="submit" [disabled]="loading">
+        <span *ngIf="!loading">Submit</span>
+        <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> 
+        <span *ngIf="loading">Loading...</span>
+    </button>
+</form>
+
